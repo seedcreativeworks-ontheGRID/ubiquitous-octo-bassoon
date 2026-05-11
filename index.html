@@ -69,8 +69,8 @@
     color: var(--ink);
     font-family: var(--serif-text);
     font-weight: 400;
-    font-size: 15.5px;
-    line-height: 1.6;
+    font-size: 17px;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
@@ -82,11 +82,11 @@
   /* ── Type roles ──────────────────────────────────────────── */
   .display {
     font-family: var(--serif);
-    font-weight: 360;
+    font-weight: 500;
     letter-spacing: -0.005em;
     line-height: 1.02;
   }
-  .display em { font-style: italic; font-weight: 360; color: var(--accent); }
+  .display em { font-style: italic; font-weight: 500; color: var(--accent); }
   body[data-italic="false"] .display em { font-style: normal; color: inherit; }
 
   .eyebrow {
@@ -105,10 +105,10 @@
 
   .lede {
     font-family: var(--serif);
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
-    font-size: clamp(20px, 1.7vw, 28px);
-    line-height: 1.32;
+    font-size: clamp(21px, 1.7vw, 29px);
+    line-height: 1.38;
     letter-spacing: -0.005em;
     color: var(--ink-2);
     text-wrap: pretty;
@@ -207,7 +207,7 @@
   }
   .mobile-drawer .m-links a {
     font-family: var(--serif);
-    font-weight: 320;
+    font-weight: 500;
     font-style: italic;
     font-size: clamp(36px, 11vw, 56px);
     color: var(--ink);
@@ -364,7 +364,7 @@
 
   .hero h1 {
     font-family: var(--serif);
-    font-weight: 320;
+    font-weight: 500;
     font-size: clamp(54px, 9vw, 156px);
     letter-spacing: -0.018em;
     line-height: 0.98;
@@ -375,7 +375,7 @@
   .hero h1 em {
     font-style: italic;
     color: #e8c89a;
-    font-weight: 320;
+    font-weight: 500;
   }
   .hero h1 .line { display: block; overflow: hidden; }
   .hero h1 .line span {
@@ -400,10 +400,10 @@
     margin: 0;
     max-width: 46ch;
     font-family: var(--serif-text);
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 1.7;
-    color: rgba(243,236,224,.86);
+    font-weight: 400;
+    font-size: 17.5px;
+    line-height: 1.75;
+    color: rgba(243,236,224,.92);
   }
   .hero-foot .proof { text-align: right; }
   .hero-foot .proof .num {
@@ -475,9 +475,10 @@
   }
   .sec-head .l { display: flex; flex-direction: column; gap: 18px; }
   .sec-head h2 {
-    font-size: clamp(44px, 5.8vw, 92px);
+    font-size: clamp(46px, 5.8vw, 96px);
     margin: 0;
     text-wrap: balance;
+    font-weight: 500;
   }
   .sec-num {
     font-family: var(--mono);
@@ -591,7 +592,7 @@
   }
   .bleed-cap h3 {
     font-family: var(--serif);
-    font-weight: 320;
+    font-weight: 500;
     font-size: clamp(36px, 4.6vw, 72px);
     letter-spacing: -0.012em;
     line-height: 1.02;
@@ -603,10 +604,10 @@
   .bleed-cap p {
     margin: 0;
     font-family: var(--serif-text);
-    font-weight: 300;
-    font-size: 15.5px;
-    line-height: 1.7;
-    color: rgba(243,236,224,.84);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.75;
+    color: rgba(243,236,224,.92);
     max-width: 42ch;
   }
   .bleed-img::after {
@@ -682,8 +683,8 @@
   }
   .offer-card h3 {
     font-family: var(--serif);
-    font-weight: 360;
-    font-size: 28px;
+    font-weight: 500;
+    font-size: 30px;
     letter-spacing: -0.01em;
     line-height: 1.08;
     margin: 0;
@@ -692,8 +693,8 @@
   .offer-card h3 em { font-style: italic; color: var(--accent); }
   .offer-card p {
     margin: 0 0 auto;
-    font-size: 14.5px;
-    line-height: 1.55;
+    font-size: 16px;
+    line-height: 1.65;
     color: var(--ink-2);
     max-width: 32ch;
   }
@@ -758,16 +759,16 @@
   }
   .step h5 {
     font-family: var(--serif);
-    font-weight: 360;
-    font-size: 28px;
+    font-weight: 500;
+    font-size: 30px;
     letter-spacing: -0.005em;
     margin: 14px 0 10px;
   }
   .step h5 em { font-style: italic; color: var(--accent); }
   .step p {
     margin: 0;
-    font-size: 14px;
-    line-height: 1.55;
+    font-size: 16px;
+    line-height: 1.65;
     color: var(--ink-2);
     max-width: 28ch;
   }
@@ -783,9 +784,9 @@
   .quote blockquote {
     margin: 0;
     font-family: var(--serif);
-    font-weight: 300; font-style: italic;
-    font-size: clamp(28px, 3.4vw, 52px);
-    line-height: 1.2;
+    font-weight: 400; font-style: italic;
+    font-size: clamp(30px, 3.4vw, 56px);
+    line-height: 1.25;
     letter-spacing: -0.012em;
     color: var(--ink);
     text-wrap: balance;
@@ -830,8 +831,8 @@
   .atlas-row .city {
     font-family: var(--serif);
     font-style: italic;
-    font-weight: 300;
-    font-size: 28px;
+    font-weight: 400;
+    font-size: 30px;
     color: var(--ink);
     letter-spacing: -0.01em;
   }
@@ -883,9 +884,9 @@
   }
   .cta-row .col a, .cta-row .col p {
     font-family: var(--serif);
-    font-weight: 320;
-    font-size: 22px;
-    line-height: 1.35;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.4;
     color: var(--ink);
     text-decoration: none;
     margin: 0;
