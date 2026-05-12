@@ -843,11 +843,12 @@
   /* ── Brand strip (replaces journal) ───────────────────── */
   .brandstrip-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 4px;
   }
-  .brandstrip-grid .img.balcony { aspect-ratio: 16/10; }
-  .brandstrip-grid .img.bath    { aspect-ratio: 16/10; }
+  .brandstrip-grid .img { aspect-ratio: 4/3; }
+  .brandstrip-grid .img.balcony { aspect-ratio: 4/3; }
+  .brandstrip-grid .img.bath    { aspect-ratio: 4/3; }
   .brandstrip-grid .img.balcony .ph {
     background:
       linear-gradient(180deg, rgba(232,200,154,.18) 0%, rgba(0,0,0,0) 60%),
@@ -1008,7 +1009,7 @@
     .details-grid { grid-template-columns: 1fr 1fr; }
     .details-grid .img:last-child { grid-column: 1 / -1; aspect-ratio: 21/9; }
     .cta-row { grid-template-columns: 1fr 1fr; }
-    .brandstrip-grid { grid-template-columns: 1fr 1fr; }
+    .brandstrip-grid { grid-template-columns: 1fr 1fr 1fr; }
     footer {
       grid-template-columns: 1fr 1fr;
       text-align: left;
@@ -1148,11 +1149,10 @@
 
     /* Brand strip → single column 4/3 */
     .brandstrip-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 4px;
     }
-    .brandstrip-grid .img.balcony,
-    .brandstrip-grid .img.bath { aspect-ratio: 4/3; }
+    .brandstrip-grid .img { aspect-ratio: 4/3; }
 
     /* CTA */
     .cta h2 { font-size: clamp(36px, 11vw, 64px); margin-bottom: 32px; line-height: 1.0; }
@@ -1232,7 +1232,7 @@
     <a href="#contact" data-mclose>Contact</a>
   </nav>
   <div class="m-foot">
-    <span class="m-meta">Singapore · Dubai · Rotterdam · São Paulo</span>
+    <span class="m-meta">Toronto · Mumbai · Chicago · Karachi</span>
     <a href="#contact" class="m-cta" data-mclose>
       Begin a brief
       <span>→</span>
@@ -1252,7 +1252,7 @@
 
     <div class="hero-top">
       <span class="meta"><span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#e8c89a;margin-right:12px;vertical-align:middle;transform:translateY(-1px);"></span>N° 01 — The House</span>
-      <span class="meta">Singapore · Dubai · Rotterdam · São Paulo</span>
+      <span class="meta">Toronto · Mumbai · Chicago · Karachi</span>
     </div>
 
     <div class="hero-inner">
@@ -1284,12 +1284,11 @@
   <!-- ─── Place band ─────────────────────────────────── -->
   <div class="placeband" aria-hidden="true">
     <div class="placeband-track">
-      <span>Singapore</span><span>Rotterdam</span><span>Dubai</span><span>Como</span>
-      <span>Marrakech</span><span>Mombasa</span><span>Hamburg</span><span>Kyoto</span>
-      <span>Antwerp</span><span>São Paulo</span><span>Mumbai</span><span>Lisbon</span>
-      <span>Singapore</span><span>Rotterdam</span><span>Dubai</span><span>Como</span>
-      <span>Marrakech</span><span>Mombasa</span><span>Hamburg</span><span>Kyoto</span>
-      <span>Antwerp</span><span>São Paulo</span><span>Mumbai</span><span>Lisbon</span>
+      <span>Toronto</span><span>Turkey</span><span>Munich</span><span>Karachi</span>
+      <span>Lahore</span><span>Islamabad</span><span>Mumbai</span><span>Dallas</span>
+      <span>Chicago</span><span>Minneapolis</span><span>Toronto</span><span>Turkey</span>
+      <span>Munich</span><span>Karachi</span><span>Lahore</span><span>Islamabad</span>
+      <span>Mumbai</span><span>Dallas</span><span>Chicago</span><span>Minneapolis</span>
     </div>
   </div>
 
@@ -1311,17 +1310,17 @@
         <div class="img a has-photo">
           <img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Luxury hotel suite at first light with linen bedding and warm sconces" width="1400" height="1050" loading="lazy" />
           <span class="frame-no">FRM 01 / 12</span>
-          <span class="cap">Penang · Suite 412</span>
+          <span class="cap">Toronto · Suite 08</span>
         </div>
         <div class="img b has-photo">
           <img src="https://images.pexels.com/photos/2034335/pexels-photo-2034335.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Elegant hotel lobby threshold in stone and oak" width="1200" height="960" loading="lazy" />
           <span class="frame-no">FRM 02 / 12</span>
-          <span class="cap">Lisbon · Arrival</span>
+          <span class="cap">Mumbai · Arrival</span>
         </div>
         <div class="img c has-photo">
           <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Turn-down service with bedside lamp and crisp linens" width="1200" height="960" loading="lazy" />
           <span class="frame-no">FRM 03 / 12</span>
-          <span class="cap">Como · Villa</span>
+          <span class="cap">Karachi · Villa</span>
         </div>
       </div>
     </div>
@@ -1517,22 +1516,34 @@
           <span>N°</span><span>City</span><span>Region</span><span>Established</span><span></span>
         </div>
         <div class="atlas-row">
-          <span>01</span><span class="city">Singapore</span><span>South-East Asia</span><span>2018 · HQ</span><span>→</span>
+          <span>01</span><span class="city">Toronto</span><span>Ontario · Canada</span><span>2018 · HQ</span><span>→</span>
         </div>
         <div class="atlas-row">
-          <span>02</span><span class="city">Dubai</span><span>Gulf &amp; East Africa</span><span>2020</span><span>→</span>
+          <span>02</span><span class="city">Chicago</span><span>Illinois · USA</span><span>2019</span><span>→</span>
         </div>
         <div class="atlas-row">
-          <span>03</span><span class="city">Rotterdam</span><span>Europe &amp; Atlantic</span><span>2022</span><span>→</span>
+          <span>03</span><span class="city">Dallas</span><span>Texas · USA</span><span>2021</span><span>→</span>
         </div>
         <div class="atlas-row">
-          <span>04</span><span class="city">São Paulo</span><span>South America</span><span>2024</span><span>→</span>
+          <span>04</span><span class="city">Minneapolis</span><span>Minnesota · USA</span><span>2022</span><span>→</span>
         </div>
         <div class="atlas-row">
-          <span>05</span><span class="city">Mombasa</span><span>East Africa · partner</span><span>2021</span><span>→</span>
+          <span>05</span><span class="city">Mumbai</span><span>India · partner</span><span>2020</span><span>→</span>
         </div>
         <div class="atlas-row">
-          <span>06</span><span class="city">Houston</span><span>North America · partner</span><span>2023</span><span>→</span>
+          <span>06</span><span class="city">Karachi</span><span>Pakistan · partner</span><span>2021</span><span>→</span>
+        </div>
+        <div class="atlas-row">
+          <span>07</span><span class="city">Lahore</span><span>Pakistan · partner</span><span>2022</span><span>→</span>
+        </div>
+        <div class="atlas-row">
+          <span>08</span><span class="city">Islamabad</span><span>Pakistan · partner</span><span>2023</span><span>→</span>
+        </div>
+        <div class="atlas-row">
+          <span>09</span><span class="city">Munich</span><span>Germany · partner</span><span>2023</span><span>→</span>
+        </div>
+        <div class="atlas-row">
+          <span>10</span><span class="city">Turkey</span><span>Istanbul · partner</span><span>2024</span><span>→</span>
         </div>
       </div>
     </div>
@@ -1553,14 +1564,34 @@
     </div>
     <div class="brandstrip-grid reveal d1">
       <div class="img balcony has-photo">
-        <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Hotel balcony view at dusk overlooking water and mountains" width="1600" height="1000" loading="lazy" />
+        <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Hotel balcony view at dusk overlooking water" width="1600" height="1000" loading="lazy" />
         <span class="frame-no">PORTFOLIO · I</span>
-        <span class="cap">122-key resort · 2025</span>
+        <span class="cap">Downtown Toronto · 94-key boutique · 2024</span>
       </div>
       <div class="img bath has-photo">
         <img src="https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Spa-like marble bathing suite with brass fixtures" width="1600" height="1000" loading="lazy" />
         <span class="frame-no">PORTFOLIO · II</span>
-        <span class="cap">Private estate · 2025</span>
+        <span class="cap">Bradford, ON · Select service · 2024</span>
+      </div>
+      <div class="img balcony has-photo">
+        <img src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Modern hotel room with warm ambient lighting" width="1600" height="1000" loading="lazy" />
+        <span class="frame-no">PORTFOLIO · III</span>
+        <span class="cap">North Bay, ON · 62-key hotel · 2025</span>
+      </div>
+      <div class="img bath has-photo">
+        <img src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Elegant hotel suite with city views" width="1600" height="1000" loading="lazy" />
+        <span class="frame-no">PORTFOLIO · IV</span>
+        <span class="cap">Mississauga, ON · Extended stay · 2025</span>
+      </div>
+      <div class="img balcony has-photo">
+        <img src="https://images.pexels.com/photos/2417842/pexels-photo-2417842.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Hotel lobby with warm timber and stone finishes" width="1600" height="1000" loading="lazy" />
+        <span class="frame-no">PORTFOLIO · V</span>
+        <span class="cap">Brampton, ON · Full service · 2025</span>
+      </div>
+      <div class="img bath has-photo">
+        <img src="https://images.pexels.com/photos/1743231/pexels-photo-1743231.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Refined suite interior with editorial lighting" width="1600" height="1000" loading="lazy" />
+        <span class="frame-no">PORTFOLIO · VI</span>
+        <span class="cap">Hamilton, ON · Heritage hotel · 2026</span>
       </div>
     </div>
   </section>
@@ -1601,7 +1632,7 @@
 
 <footer>
   <div class="left">© 2026 VTrade Connections Pte. Ltd.</div>
-  <div class="center">A house for hospitality trade — Singapore · Dubai · Rotterdam · São Paulo</div>
+  <div class="center">A house for hospitality trade — Toronto · Chicago · Mumbai · Karachi</div>
   <div class="right">
     <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Modern Slavery</a>
   </div>
