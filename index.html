@@ -6,14 +6,14 @@
 <title>VTrade Connections — A Global Hospitality Trading House</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <script>
   // Tweak block — host can rewrite on disk.
   window.__TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-    "palette": "ember",
+    "palette": "vtc",
     "italicAccent": true,
-    "grain": true,
+    "grain": false,
     "letterspaced": false
   }/*EDITMODE-END*/;
 </script>
@@ -21,44 +21,30 @@
 <style>
   /* ────────────────────────────────────────────────────────
      VTrade Connections — Hospitality Trading House
-     Warm dark, cinematic, image-led, quiet motion.
+     VTC Brand: White, bold sans-serif, blue accent.
      ──────────────────────────────────────────────────────── */
 
   :root {
-    /* ember (default) — warm dark, candlelit */
-    --bg:        #14100c;
-    --bg-2:      #1c1712;
-    --paper:     #f3ece0;
-    --ink:       #f1e8d8;
-    --ink-2:     #d6cab4;
-    --muted:     #8a7e6a;
-    --line:      rgba(241,232,216,.16);
-    --line-2:    rgba(241,232,216,.08);
-    --accent:    oklch(0.78 0.07 60);  /* warm brass */
-    --accent-2:  oklch(0.62 0.08 38);  /* burnt umber */
+    --bg:        #ffffff;
+    --bg-2:      #f0f5ff;
+    --paper:     #e8f0fe;
+    --ink:       #0f172a;
+    --ink-2:     #334155;
+    --muted:     #64748b;
+    --line:      rgba(15,23,42,.1);
+    --line-2:    rgba(15,23,42,.06);
+    --accent:    #2563eb;
+    --accent-2:  #1d4ed8;
 
     --sec-y: 140px;
     --sec-x: 72px;
     --gap:   56px;
     --maxw:  1480px;
 
-    --serif:      "Cormorant Garamond", ui-serif, Georgia, serif;
-    --serif-text: "Source Serif 4", ui-serif, Georgia, serif;
+    --sans:       "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    --serif:      "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    --serif-text: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
     --mono:       "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
-    --sans:       -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  }
-
-  [data-palette="bone"] {
-    --bg: #efe9dd; --bg-2: #e6dfd1; --paper: #faf6ec;
-    --ink: #1a1610; --ink-2: #2c261c; --muted: #8a7e6a;
-    --line: rgba(26,22,16,.16); --line-2: rgba(26,22,16,.08);
-    --accent: oklch(0.5 0.08 38); --accent-2: oklch(0.42 0.06 32);
-  }
-  [data-palette="onyx"] {
-    --bg: #0c0c0d; --bg-2: #141416; --paper: #ece8df;
-    --ink: #ece8df; --ink-2: #c8c2b3; --muted: #7d7568;
-    --line: rgba(236,232,223,.14); --line-2: rgba(236,232,223,.07);
-    --accent: oklch(0.84 0.06 80); --accent-2: oklch(0.65 0.05 60);
   }
 
   * { box-sizing: border-box; }
@@ -68,7 +54,7 @@
   body {
     background: var(--bg);
     color: var(--ink);
-    font-family: var(--serif-text);
+    font-family: var(--sans);
     font-weight: 400;
     font-size: 17px;
     line-height: 1.7;
@@ -82,12 +68,12 @@
 
   /* ── Type roles ──────────────────────────────────────────── */
   .display {
-    font-family: var(--serif);
-    font-weight: 500;
-    letter-spacing: -0.005em;
-    line-height: 1.02;
+    font-family: var(--sans);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.0;
   }
-  .display em { font-style: italic; font-weight: 500; color: var(--accent); }
+  .display em { font-style: italic; color: var(--accent); }
   body[data-italic="false"] .display em { font-style: normal; color: inherit; }
 
   .eyebrow {
@@ -105,12 +91,12 @@
   }
 
   .lede {
-    font-family: var(--serif);
+    font-family: var(--sans);
     font-weight: 400;
-    font-style: italic;
-    font-size: clamp(21px, 1.7vw, 29px);
-    line-height: 1.38;
-    letter-spacing: -0.005em;
+    font-style: normal;
+    font-size: clamp(18px, 1.5vw, 24px);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
     color: var(--ink-2);
     text-wrap: pretty;
   }
@@ -161,8 +147,10 @@
     cursor: pointer;
     position: relative;
     margin-left: auto;
-    color: var(--ink);
+    color: #fff;
+    transition: color .4s ease;
   }
+  .nav.scrolled .nav-burger { color: var(--ink); }
   .nav-burger span {
     position: absolute;
     left: 10px; right: 10px;
@@ -181,7 +169,7 @@
     position: fixed;
     inset: 0;
     z-index: 49;
-    background: var(--bg);
+    background: #ffffff;
     transform: translateX(100%);
     transition: transform .5s cubic-bezier(.2,.8,.2,1);
     display: flex;
@@ -207,18 +195,18 @@
     gap: 8px;
   }
   .mobile-drawer .m-links a {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-style: italic;
-    font-size: clamp(36px, 11vw, 56px);
+    font-family: var(--sans);
+    font-weight: 700;
+    font-style: normal;
+    font-size: clamp(32px, 9vw, 52px);
     color: var(--ink);
     text-decoration: none;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
     line-height: 1.15;
     min-height: 56px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--line-2);
+    border-bottom: 1px solid var(--line);
     padding: 12px 0;
   }
   .mobile-drawer .m-foot {
@@ -227,14 +215,15 @@
     gap: 18px;
   }
   .mobile-drawer .m-cta {
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    padding: 18px 24px;
-    border: 1px solid var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    padding: 18px 28px;
+    border: 1px solid var(--accent);
     border-radius: 999px;
-    color: var(--ink);
+    background: var(--accent);
+    color: #fff;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -250,68 +239,87 @@
   }
   .nav.scrolled {
     padding: 16px var(--sec-x);
-    background: color-mix(in oklab, var(--bg) 72%, transparent);
+    background: rgba(255,255,255,.92);
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border-bottom: 1px solid var(--line-2);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 1px 12px rgba(15,23,42,.06);
   }
   .brand {
     display: flex; align-items: center; gap: 14px;
-    font-family: var(--serif);
-    font-weight: 360;
-    font-size: 22px;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 18px;
     letter-spacing: -0.01em;
-    color: var(--ink);
+    color: #fff;
     text-decoration: none;
     line-height: 1;
+    transition: color .4s ease;
   }
+  .nav.scrolled .brand { color: var(--ink); }
+  .nav.scrolled .brand .mark { background: var(--ink); }
+  .brand .name small { color: rgba(255,255,255,.65); }
+  .nav.scrolled .brand .name small { color: var(--muted); }
   .brand .mark {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 30px; height: 30px;
-    border: 1px solid currentColor;
-    border-radius: 50%;
-    font-style: italic;
-    font-size: 15px;
+    padding: 6px 14px;
+    background: var(--ink);
+    color: #fff;
+    border-radius: 8px;
+    font-family: var(--sans);
+    font-weight: 800;
+    font-style: normal;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    border: none;
+    min-height: 0;
+    width: auto;
+    height: auto;
   }
   .brand .name { display: flex; flex-direction: column; gap: 2px; }
   .brand .name small {
     font-family: var(--mono);
-    font-size: 9.5px; letter-spacing: 0.22em;
-    color: var(--muted);
+    font-size: 9.5px; letter-spacing: 0.18em;
+    color: rgba(255,255,255,.6);
     text-transform: uppercase;
+    transition: color .4s ease;
   }
+  .nav.scrolled .brand .name small { color: var(--muted); }
   .nav-links {
     display: flex;
     gap: 36px;
     justify-content: center;
   }
   .nav-links a {
-    font-family: var(--mono);
-    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--ink-2); text-decoration: none;
+    font-family: var(--sans);
+    font-size: 14px; font-weight: 500; letter-spacing: -0.01em;
+    color: rgba(255,255,255,.85); text-decoration: none;
     position: relative; padding: 4px 0;
     transition: color .3s ease;
   }
+  .nav.scrolled .nav-links a { color: var(--ink-2); }
   .nav-links a::after {
     content:""; position:absolute; left:0; right:0; bottom:-3px; height:1px;
     background: var(--accent); transform: scaleX(0); transform-origin: left;
     transition: transform .5s cubic-bezier(.2,.8,.2,1);
   }
-  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover { color: #fff; }
+  .nav.scrolled .nav-links a:hover { color: var(--ink); }
   .nav-links a:hover::after { transform: scaleX(1); }
   .nav-tail { display: flex; justify-content: flex-end; }
   .nav-cta {
-    font-family: var(--mono);
-    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-    padding: 11px 20px;
-    border: 1px solid var(--ink);
+    font-family: var(--sans);
+    font-size: 13px; font-weight: 600; letter-spacing: -0.01em;
+    padding: 11px 22px;
+    border: 1px solid var(--accent);
     border-radius: 999px;
-    color: var(--ink);
+    background: var(--accent);
+    color: #fff;
     text-decoration: none;
     display: inline-flex; align-items: center; gap: 10px;
     transition: all .35s ease;
   }
-  .nav-cta:hover { background: var(--ink); color: var(--bg); }
+  .nav-cta:hover { background: var(--accent-2); border-color: var(--accent-2); }
   .nav-cta .arr { transition: transform .35s ease; }
   .nav-cta:hover .arr { transform: translateX(3px); }
 
@@ -364,19 +372,19 @@
   }
 
   .hero h1 {
-    font-family: var(--serif);
-    font-weight: 500;
+    font-family: var(--sans);
+    font-weight: 800;
     font-size: clamp(54px, 9vw, 156px);
-    letter-spacing: -0.018em;
-    line-height: 0.98;
-    color: #f6efe2;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    color: #ffffff;
     margin: 0 0 56px;
     text-wrap: balance;
   }
   .hero h1 em {
     font-style: italic;
-    color: #e8c89a;
-    font-weight: 500;
+    color: #93c5fd;
+    font-weight: 800;
   }
   .hero h1 .line { display: block; overflow: hidden; }
   .hero h1 .line span {
@@ -408,13 +416,13 @@
   }
   .hero-foot .proof { text-align: right; }
   .hero-foot .proof .num {
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 300;
+    font-family: var(--sans);
+    font-style: normal;
+    font-weight: 800;
     font-size: 44px;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.03em;
     line-height: 1;
-    color: #e8c89a;
+    color: #93c5fd;
     display: block;
     margin-bottom: 10px;
   }
@@ -458,8 +466,8 @@
     to   { transform: translateX(-50%); }
   }
   .placeband span {
-    font-family: var(--serif); font-style: italic; font-weight: 300;
-    font-size: 22px; color: var(--ink-2);
+    font-family: var(--sans); font-style: normal; font-weight: 600;
+    font-size: 18px; color: var(--ink-2);
     display: inline-flex; align-items: center; gap: 56px;
   }
   .placeband span::after {
@@ -476,10 +484,12 @@
   }
   .sec-head .l { display: flex; flex-direction: column; gap: 18px; }
   .sec-head h2 {
-    font-size: clamp(46px, 5.8vw, 96px);
+    font-size: clamp(42px, 5.8vw, 88px);
     margin: 0;
     text-wrap: balance;
-    font-weight: 500;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.025em;
   }
   .sec-num {
     font-family: var(--mono);
@@ -500,11 +510,9 @@
     display: grid; place-items: center;
     background:
       repeating-linear-gradient(135deg,
-        color-mix(in oklab, var(--ink) 6%, transparent) 0 1px,
+        rgba(37,99,235,.06) 0 1px,
         transparent 1px 16px),
-      linear-gradient(135deg,
-        color-mix(in oklab, var(--accent-2) 18%, var(--bg-2)) 0%,
-        var(--bg-2) 60%);
+      linear-gradient(135deg, #dbeafe 0%, #f0f5ff 60%);
   }
   .img .ph::after {
     content: attr(data-label);
@@ -592,15 +600,15 @@
     align-items: end;
   }
   .bleed-cap h3 {
-    font-family: var(--serif);
-    font-weight: 500;
+    font-family: var(--sans);
+    font-weight: 800;
     font-size: clamp(36px, 4.6vw, 72px);
-    letter-spacing: -0.012em;
-    line-height: 1.02;
+    letter-spacing: -0.025em;
+    line-height: 1.0;
     margin: 0;
     text-wrap: balance;
   }
-  .bleed-cap h3 em { font-style: italic; color: #e8c89a; }
+  .bleed-cap h3 em { font-style: italic; color: #93c5fd; }
   .bleed-cap .meta { color: rgba(243,236,224,.65); margin-bottom: 14px; }
   .bleed-cap p {
     margin: 0;
@@ -663,7 +671,7 @@
     position: relative;
     transition: background .5s ease;
   }
-  .offer-card:hover { background: color-mix(in oklab, var(--bg-2) 60%, transparent); }
+  .offer-card:hover { background: var(--bg-2); }
   .offer-card .img {
     aspect-ratio: 4/3;
     width: 100%;
@@ -683,13 +691,14 @@
     color: var(--accent);
   }
   .offer-card h3 {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 30px;
-    letter-spacing: -0.01em;
-    line-height: 1.08;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
     margin: 0;
     text-wrap: balance;
+    color: var(--ink);
   }
   .offer-card h3 em { font-style: italic; color: var(--accent); }
   .offer-card p {
@@ -742,7 +751,7 @@
     margin-top: 56px;
   }
   .step {
-    border-top: 1px solid var(--ink);
+    border-top: 2px solid var(--accent);
     padding-top: 22px;
     position: relative;
   }
@@ -750,7 +759,7 @@
     content: "";
     position: absolute; top: -4px; left: 0;
     width: 7px; height: 7px;
-    border-radius: 50%; background: var(--ink);
+    border-radius: 50%; background: var(--accent);
   }
   .step .sn {
     font-family: var(--mono);
@@ -759,11 +768,12 @@
     text-transform: uppercase;
   }
   .step h5 {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 30px;
-    letter-spacing: -0.005em;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.02em;
     margin: 14px 0 10px;
+    color: var(--ink);
   }
   .step h5 em { font-style: italic; color: var(--accent); }
   .step p {
@@ -784,11 +794,11 @@
   .quote .wrap-q { max-width: 1100px; margin: 0 auto; }
   .quote blockquote {
     margin: 0;
-    font-family: var(--serif);
-    font-weight: 400; font-style: italic;
-    font-size: clamp(30px, 3.4vw, 56px);
+    font-family: var(--sans);
+    font-weight: 700; font-style: normal;
+    font-size: clamp(26px, 3vw, 48px);
     line-height: 1.25;
-    letter-spacing: -0.012em;
+    letter-spacing: -0.025em;
     color: var(--ink);
     text-wrap: balance;
   }
@@ -830,14 +840,14 @@
     padding: 14px 0;
   }
   .atlas-row .city {
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: 30px;
+    font-family: var(--sans);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
     color: var(--ink);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
   }
-  .atlas-row:not(.head):hover { transform: translateX(14px); }
+  .atlas-row:not(.head):hover { transform: translateX(14px); color: var(--accent); }
   .atlas-row:not(.head):hover .city { color: var(--accent); }
 
   /* ── Brand strip (replaces journal) ───────────────────── */
@@ -885,14 +895,14 @@
     font-weight: 500; margin: 0 0 14px;
   }
   .cta-row .col a, .cta-row .col p {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: 24px;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 20px;
     line-height: 1.4;
     color: var(--ink);
     text-decoration: none;
     margin: 0;
-    letter-spacing: -0.005em;
+    letter-spacing: -0.01em;
   }
   .cta-row .col a {
     display: block;
@@ -902,18 +912,17 @@
   .big-cta {
     margin-top: 64px;
     display: inline-flex; align-items: center; gap: 20px;
-    padding: 22px 38px;
+    padding: 22px 42px;
     border-radius: 999px;
-    background: var(--paper);
-    color: var(--bg);
-    font-family: var(--mono);
-    font-size: 11px; letter-spacing: 0.22em;
-    text-transform: uppercase;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 16px; font-weight: 700; letter-spacing: -0.01em;
     text-decoration: none;
     transition: all .4s ease;
   }
-  .big-cta:hover { background: var(--accent); color: var(--bg); }
-  .big-cta .arr { transition: transform .35s ease; font-family: var(--serif); font-style: italic; font-size: 16px; letter-spacing: 0; text-transform: none; }
+  .big-cta:hover { background: var(--accent-2); color: #fff; }
+  .big-cta .arr { transition: transform .35s ease; font-size: 18px; }
   .big-cta:hover .arr { transform: translateX(6px); }
 
   /* ── Footer ───────────────────────────────────────────── */
@@ -966,7 +975,7 @@
     .nav-burger { display: block; }
 
     /* Hero */
-    .hero h1 { font-size: clamp(48px, 11vw, 96px); }
+    .hero h1 { font-size: clamp(44px, 10vw, 88px); }
     .hero-top { padding-top: calc(var(--sec-x) + 48px); }
     .hero-foot { grid-template-columns: 1fr auto; gap: 28px; }
     .hero-foot p { grid-column: 1 / -1; }
@@ -1196,12 +1205,12 @@
   }
 </style>
 </head>
-<body data-palette="ember" data-italic="true" data-grain="true">
+<body data-palette="vtc" data-italic="true" data-grain="false">
 
 <!-- ── Nav ─────────────────────────────────────────────── -->
 <nav class="nav" id="nav">
   <a href="#top" class="brand">
-    <span class="mark">V</span>
+    <span class="mark">VTC</span>
     <span class="name">
       <span>VTrade Connections</span>
       <small>Est. 2018 · Hospitality Trading House</small>
