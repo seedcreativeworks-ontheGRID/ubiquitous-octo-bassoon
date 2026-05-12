@@ -1,0 +1,1185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Selected Projects — VTrade Connections</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg:        #ffffff;
+    --bg-2:      #f0f5ff;
+    --paper:     #e8f0fe;
+    --ink:       #0f172a;
+    --ink-2:     #334155;
+    --muted:     #64748b;
+    --line:      rgba(15,23,42,.1);
+    --line-2:    rgba(15,23,42,.06);
+    --accent:    #2563eb;
+    --accent-2:  #1d4ed8;
+
+    --sec-y: 140px;
+    --sec-x: 72px;
+    --gap:   56px;
+    --maxw:  1480px;
+
+    --sans:  "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    --mono:  "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent); color: #fff; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--sec-x); }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .eyebrow .dot {
+    display:inline-block; width:5px; height:5px; border-radius:50%;
+    background: var(--accent); margin-right: 12px; vertical-align: middle;
+    transform: translateY(-1px);
+  }
+
+  /* ── Nav ────────────────────────────────────────────── */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    padding: 24px var(--sec-x);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border-bottom: 1px solid var(--line);
+  }
+  .brand {
+    display: flex; align-items: center; gap: 14px;
+    font-family: var(--sans);
+    font-weight: 600; font-size: 18px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+    line-height: 1;
+  }
+  .brand .mark {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 6px 14px;
+    background: var(--ink);
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 800; font-size: 14px;
+    letter-spacing: -0.01em;
+  }
+  .brand .name { display: flex; flex-direction: column; gap: 2px; }
+  .brand .name small {
+    font-family: var(--mono);
+    font-size: 9.5px; letter-spacing: 0.18em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 36px; justify-content: center; }
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 14px; font-weight: 500; letter-spacing: -0.01em;
+    color: var(--ink-2); text-decoration: none;
+    transition: color .3s ease;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a.active { color: var(--accent); font-weight: 600; }
+  .nav-tail { display: flex; justify-content: flex-end; }
+  .nav-cta {
+    font-family: var(--sans);
+    font-size: 13px; font-weight: 600; letter-spacing: -0.01em;
+    padding: 11px 22px;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: all .35s ease;
+  }
+  .nav-cta:hover { background: var(--accent-2); border-color: var(--accent-2); }
+  .nav-burger {
+    display: none; width: 44px; height: 44px;
+    background: transparent; border: 0; padding: 0; cursor: pointer;
+    position: relative; margin-left: auto;
+    color: var(--ink);
+  }
+  .nav-burger span {
+    position: absolute; left: 10px; right: 10px;
+    height: 2px; background: currentColor;
+    transition: all .35s ease;
+  }
+  .nav-burger span:nth-child(1) { top: 16px; }
+  .nav-burger span:nth-child(2) { top: 22px; }
+  .nav-burger span:nth-child(3) { top: 28px; }
+  body.menu-open .nav-burger span:nth-child(1) { top: 22px; transform: rotate(45deg); }
+  body.menu-open .nav-burger span:nth-child(2) { opacity: 0; }
+  body.menu-open .nav-burger span:nth-child(3) { top: 22px; transform: rotate(-45deg); }
+
+  .mobile-drawer {
+    position: fixed; inset: 0;
+    z-index: 49;
+    background: #fff;
+    transform: translateX(100%);
+    transition: transform .5s cubic-bezier(.2,.8,.2,1);
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 100px var(--sec-x) 48px;
+    visibility: hidden;
+  }
+  body.menu-open .mobile-drawer { transform: translateX(0); visibility: visible; }
+  .mobile-drawer .m-links { display: flex; flex-direction: column; gap: 8px; }
+  .mobile-drawer .m-links a {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(32px, 9vw, 52px);
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    border-bottom: 1px solid var(--line);
+    padding: 12px 0;
+  }
+  .mobile-drawer .m-cta {
+    font-family: var(--sans);
+    font-size: 15px; font-weight: 700; letter-spacing: -0.01em;
+    padding: 18px 28px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 56px;
+  }
+
+  /* ── Page head ─────────────────────────────────────── */
+  .page-head {
+    padding: calc(var(--sec-y) + 60px) 0 var(--sec-y);
+    border-bottom: 1px solid var(--line);
+  }
+  .page-head .eyebrow { margin-bottom: 24px; display: inline-block; }
+  .page-head h1 {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(56px, 8.5vw, 144px);
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    color: var(--accent);
+    margin: 0 0 36px;
+    text-wrap: balance;
+  }
+  .page-head h1 em { font-style: italic; color: var(--ink); }
+  .page-head p.lede {
+    font-family: var(--sans);
+    font-size: clamp(18px, 1.5vw, 26px);
+    line-height: 1.4;
+    color: var(--ink-2);
+    max-width: 60ch;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .page-head .index {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .page-head .index a {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 22px 24px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    text-decoration: none;
+    transition: all .35s ease;
+    background: #fff;
+  }
+  .page-head .index a:hover {
+    border-color: var(--accent);
+    background: var(--bg-2);
+    transform: translateY(-2px);
+  }
+  .page-head .index a .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .page-head .index a .city {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .page-head .index a .desc {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: -0.005em;
+  }
+
+  /* ── Project section ──────────────────────────────── */
+  .project {
+    padding: var(--sec-y) 0;
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 90px;
+  }
+  .project-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+    align-items: end;
+    margin-bottom: 64px;
+  }
+  .project-head .l { display: flex; flex-direction: column; gap: 20px; }
+  .project-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .project-title {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(42px, 5.6vw, 88px);
+    letter-spacing: -0.025em;
+    line-height: 0.98;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .project-title em { font-style: italic; color: var(--accent); }
+  .project-overview {
+    font-family: var(--sans);
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--ink-2);
+    margin: 0;
+    max-width: 52ch;
+  }
+
+  .project-info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding: 32px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 56px;
+  }
+  .project-info dt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .project-info dd {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* Hero image for project */
+  .project-hero-img {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 21/9;
+    overflow: hidden;
+    border-radius: 16px;
+    margin-bottom: 32px;
+  }
+  .project-hero-img img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+  }
+  .project-site-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 16px;
+    margin-bottom: 80px;
+  }
+  .project-site-row .img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    aspect-ratio: 4/3;
+    background: var(--bg-2);
+  }
+  .project-site-row .img img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+  }
+  .project-site-row .img .cap {
+    position: absolute;
+    left: 16px; bottom: 14px;
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    background: rgba(15,23,42,.55);
+    padding: 6px 12px;
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+  }
+
+  /* Showroom gallery */
+  .showroom-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+    align-items: end;
+    margin-bottom: 40px;
+  }
+  .showroom-head h3 {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(28px, 3vw, 44px);
+    letter-spacing: -0.02em;
+    color: var(--accent);
+    margin: 0;
+  }
+  .showroom-head p {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 16px;
+    max-width: 46ch;
+  }
+  .showroom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .showroom-grid figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .showroom-grid figure .ph {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    aspect-ratio: 4/5;
+    background: var(--bg-2);
+  }
+  .showroom-grid figure .ph img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    transition: transform .8s cubic-bezier(.2,.8,.2,1);
+  }
+  .showroom-grid figure:hover .ph img { transform: scale(1.04); }
+  .showroom-grid figure .ph .tag {
+    position: absolute;
+    left: 14px; top: 14px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(15,23,42,.55);
+    padding: 5px 11px;
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+  }
+  .showroom-grid figcaption {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink-2);
+    letter-spacing: -0.005em;
+  }
+  .showroom-grid figcaption strong {
+    font-weight: 700; color: var(--ink);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .next-project {
+    margin-top: 80px;
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  .next-project .label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .next-project a {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(24px, 2.6vw, 36px);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color .3s ease;
+  }
+  .next-project a:hover { color: var(--accent); }
+  .next-project a .arr { color: var(--accent); margin-left: 14px; }
+
+  /* ── Closing CTA ──────────────────────────────────── */
+  .closing {
+    padding: var(--sec-y) 0;
+    text-align: center;
+    background: var(--bg-2);
+  }
+  .closing h2 {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: clamp(40px, 5.5vw, 72px);
+    letter-spacing: -0.025em;
+    line-height: 1;
+    color: var(--ink);
+    margin: 0 0 24px;
+  }
+  .closing p {
+    font-size: 18px;
+    color: var(--ink-2);
+    max-width: 52ch;
+    margin: 0 auto 36px;
+  }
+  .closing .big-cta {
+    display: inline-flex; align-items: center; gap: 18px;
+    padding: 22px 42px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 16px; font-weight: 700; letter-spacing: -0.01em;
+    text-decoration: none;
+    transition: all .35s ease;
+  }
+  .closing .big-cta:hover { background: var(--accent-2); }
+
+  /* ── Footer ──────────────────────────────────────── */
+  footer {
+    padding: 48px var(--sec-x) 36px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 24px;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  footer .center { text-align: center; }
+  footer .right { text-align: right; }
+  footer a {
+    color: var(--muted);
+    text-decoration: none;
+    margin-left: 22px;
+    transition: color .3s ease;
+  }
+  footer a:hover { color: var(--ink); }
+
+  /* ── Reveal ──────────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+
+  a, button { min-height: 44px; }
+  .nav-links a, footer a, .next-project .label { min-height: 0; }
+
+  /* ── Responsive ───────────────────────────────────── */
+  @media (max-width: 1100px) {
+    :root { --sec-y: 100px; --sec-x: 40px; --gap: 32px; }
+    .nav { grid-template-columns: auto 1fr; }
+    .nav-links, .nav-tail { display: none; }
+    .nav-burger { display: block; }
+    .page-head .index { grid-template-columns: 1fr 1fr; }
+    .project-head { grid-template-columns: 1fr; gap: 24px; }
+    .project-info { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .project-site-row { grid-template-columns: 1fr 1fr; }
+    .showroom-head { grid-template-columns: 1fr; gap: 18px; }
+    .showroom-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  }
+
+  @media (max-width: 767px) {
+    :root { --sec-y: 70px; --sec-x: 22px; }
+    .page-head { padding: 100px 0 60px; }
+    .page-head h1 { font-size: clamp(40px, 11vw, 64px); }
+    .page-head .index { grid-template-columns: 1fr; gap: 12px; margin-top: 48px; }
+    .project { padding: 64px 0; }
+    .project-head { margin-bottom: 36px; }
+    .project-info { grid-template-columns: 1fr 1fr; gap: 18px; padding: 22px 0; margin-bottom: 32px; }
+    .project-info dd { font-size: 16px; }
+    .project-hero-img { aspect-ratio: 4/3; border-radius: 10px; }
+    .project-site-row { grid-template-columns: 1fr; gap: 10px; margin-bottom: 48px; }
+    .showroom-grid { grid-template-columns: 1fr; gap: 12px; }
+    .showroom-head h3 { font-size: 26px; }
+    .next-project { flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 48px; }
+    .closing h2 { font-size: clamp(32px, 9vw, 48px); }
+    .closing .big-cta { width: 100%; justify-content: space-between; padding: 18px 24px; }
+    footer { grid-template-columns: 1fr; text-align: left; gap: 14px; padding: 36px var(--sec-x) 28px; }
+    footer .center, footer .right { text-align: left; }
+    footer a { margin: 0 18px 0 0; display: inline-block; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Nav ─────────────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand">
+    <span class="mark">VTC</span>
+    <span class="name">
+      <span>VTrade Connections</span>
+      <small>Est. 2018 · Hospitality Trading House</small>
+    </span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#offer">Practice</a>
+    <a href="index.html#approach">Approach</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <div class="nav-tail">
+    <a href="index.html#contact" class="nav-cta">
+      Begin a brief
+      <span class="arr">→</span>
+    </a>
+  </div>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileDrawer">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+  <nav class="m-links" aria-label="Mobile">
+    <a href="index.html#offer" data-mclose>Practice</a>
+    <a href="index.html#approach" data-mclose>Approach</a>
+    <a href="projects.html" data-mclose>Projects</a>
+    <a href="index.html#contact" data-mclose>Contact</a>
+  </nav>
+  <a href="index.html#contact" class="m-cta" data-mclose>
+    Begin a brief <span>→</span>
+  </a>
+</aside>
+
+<main>
+
+  <!-- ── Page head ─────────────────────────────────── -->
+  <header class="page-head">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span>Selected Projects · 2024 — 2026</span>
+      <h1>Selected <em>work</em>.</h1>
+      <p class="lede">
+        A small, recent portfolio of openings across Ontario — furnished and outfitted
+        end-to-end. Each property below shows the site as opened and the items we
+        placed, photographed in the rooms where they live.
+      </p>
+
+      <div class="index">
+        <a href="#downtown-toronto">
+          <span class="num">N° 01</span>
+          <span class="city">Downtown Toronto</span>
+          <span class="desc">94-key boutique · 2024</span>
+        </a>
+        <a href="#bradford">
+          <span class="num">N° 02</span>
+          <span class="city">Bradford, ON</span>
+          <span class="desc">Select service · 2024</span>
+        </a>
+        <a href="#north-bay">
+          <span class="num">N° 03</span>
+          <span class="city">North Bay, ON</span>
+          <span class="desc">62-key hotel · 2025</span>
+        </a>
+        <a href="#mississauga">
+          <span class="num">N° 04</span>
+          <span class="city">Mississauga, ON</span>
+          <span class="desc">Extended stay · 2025</span>
+        </a>
+        <a href="#brampton">
+          <span class="num">N° 05</span>
+          <span class="city">Brampton, ON</span>
+          <span class="desc">Full service · 2025</span>
+        </a>
+        <a href="#hamilton">
+          <span class="num">N° 06</span>
+          <span class="city">Hamilton, ON</span>
+          <span class="desc">Heritage hotel · 2026</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── 01 Downtown Toronto ───────────────────────── -->
+  <section class="project" id="downtown-toronto">
+    <div class="wrap">
+      <div class="project-head reveal">
+        <div class="l">
+          <span class="project-meta">N° 01 — Downtown Toronto</span>
+          <h2 class="project-title">A reimagined<br/><em>boutique</em> in the core.</h2>
+        </div>
+        <p class="project-overview">
+          A late-Victorian commercial conversion on King Street East, opened
+          as a 94-key boutique in spring 2024. Public floors resolve around a
+          restored timber-and-brass lobby; guest floors are dressed in oak,
+          honed stone and laundered linen. We delivered the full FF&amp;E and
+          OS&amp;E package across every floor.
+        </p>
+      </div>
+
+      <dl class="project-info reveal">
+        <div><dt>Location</dt><dd>King St E, Toronto</dd></div>
+        <div><dt>Type</dt><dd>Boutique · 94 keys</dd></div>
+        <div><dt>Completed</dt><dd>Spring 2024</dd></div>
+        <div><dt>Scope</dt><dd>Full FF&amp;E + OS&amp;E</dd></div>
+      </dl>
+
+      <div class="project-hero-img reveal">
+        <img src="https://images.pexels.com/photos/2034335/pexels-photo-2034335.jpeg?auto=compress&cs=tinysrgb&w=2000" alt="Downtown Toronto boutique hotel lobby with timber and brass" width="2000" height="857" loading="lazy" />
+      </div>
+
+      <div class="project-site-row reveal">
+        <div class="img">
+          <img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Guest suite at first light" width="1400" height="1050" loading="lazy" />
+          <span class="cap">Site · Suite 08</span>
+        </div>
+        <div class="img">
+          <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Turn-down and bedside detail" width="1400" height="1050" loading="lazy" />
+          <span class="cap">Site · Bedside</span>
+        </div>
+      </div>
+
+      <div class="showroom-head reveal">
+        <h3>Items placed.</h3>
+        <p>Photographed in the room where they live — every line item briefed,
+          sourced, freighted and installed by the house.</p>
+      </div>
+
+      <div class="showroom-grid reveal">
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Casegoods and lounge seating" loading="lazy"/><span class="tag">FF&amp;E · 01</span></div>
+          <figcaption><strong>Casegoods · Lounge seating</strong>Custom oak with brass inlay, sourced Jaipur.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/6585598/pexels-photo-6585598.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Brass hardware detail" loading="lazy"/><span class="tag">FF&amp;E · 02</span></div>
+          <figcaption><strong>Brass hardware</strong>Hand-finished sconces and door pulls.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/3144580/pexels-photo-3144580.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Folded linen" loading="lazy"/><span class="tag">OS&amp;E · 03</span></div>
+          <figcaption><strong>Linen</strong>400-thread Cairo mill, laundered to spec.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Marble vanity" loading="lazy"/><span class="tag">FF&amp;E · 04</span></div>
+          <figcaption><strong>Marble vanity</strong>Tivoli travertine, honed, fitted on site.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Pendant lighting" loading="lazy"/><span class="tag">FF&amp;E · 05</span></div>
+          <figcaption><strong>Pendant lighting</strong>Dimmable warm-white, room-dressed.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1457847/pexels-photo-1457847.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Bath fixture" loading="lazy"/><span class="tag">FF&amp;E · 06</span></div>
+          <figcaption><strong>Bath fittings</strong>Solid brass, polished and lacquered.</figcaption>
+        </figure>
+      </div>
+
+      <div class="next-project">
+        <span class="label">N° 02 — Next</span>
+        <a href="#bradford">Bradford, ON <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 02 Bradford ─────────────────────────────── -->
+  <section class="project" id="bradford">
+    <div class="wrap">
+      <div class="project-head reveal">
+        <div class="l">
+          <span class="project-meta">N° 02 — Bradford, ON</span>
+          <h2 class="project-title">Select service,<br/><em>quietly</em> elegant.</h2>
+        </div>
+        <p class="project-overview">
+          A 78-key select-service property serving the Highway 400 corridor
+          north of Toronto. Functional, durable, and dressed for high
+          turnover — every line item briefed for a twenty-year service life
+          without surrendering the warmth of a proper room.
+        </p>
+      </div>
+
+      <dl class="project-info reveal">
+        <div><dt>Location</dt><dd>Bradford, Ontario</dd></div>
+        <div><dt>Type</dt><dd>Select service · 78 keys</dd></div>
+        <div><dt>Completed</dt><dd>Autumn 2024</dd></div>
+        <div><dt>Scope</dt><dd>FF&amp;E + soft goods</dd></div>
+      </dl>
+
+      <div class="project-hero-img reveal">
+        <img src="https://images.pexels.com/photos/2417842/pexels-photo-2417842.jpeg?auto=compress&cs=tinysrgb&w=2000" alt="Bradford hotel public area with warm finishes" width="2000" height="857" loading="lazy" />
+      </div>
+
+      <div class="project-site-row reveal">
+        <div class="img">
+          <img src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="King guest room" width="1400" height="1050" loading="lazy" />
+          <span class="cap">Site · Standard king</span>
+        </div>
+        <div class="img">
+          <img src="https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Bath vanity" width="1400" height="1050" loading="lazy" />
+          <span class="cap">Site · Bath</span>
+        </div>
+      </div>
+
+      <div class="showroom-head reveal">
+        <h3>Items placed.</h3>
+        <p>The full guest-room package — bed, desk, soft seating and bath —
+          sourced as one consignment, freighted in two containers.</p>
+      </div>
+
+      <div class="showroom-grid reveal">
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Bed frame and headboard" loading="lazy"/><span class="tag">FF&amp;E · 01</span></div>
+          <figcaption><strong>Bed frame · Headboard</strong>Upholstered headboard, contract-grade frame.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Lounge chair" loading="lazy"/><span class="tag">FF&amp;E · 02</span></div>
+          <figcaption><strong>Lounge seating</strong>Wool-blend boucle, ten-year warranty.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Work desk" loading="lazy"/><span class="tag">FF&amp;E · 03</span></div>
+          <figcaption><strong>Work desk</strong>Walnut veneer, integrated power and USB.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/2255935/pexels-photo-2255935.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Desk lamp" loading="lazy"/><span class="tag">FF&amp;E · 04</span></div>
+          <figcaption><strong>Task lighting</strong>2700K dimmable, contract-rated cord.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/3144580/pexels-photo-3144580.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Folded linen" loading="lazy"/><span class="tag">OS&amp;E · 05</span></div>
+          <figcaption><strong>Linen</strong>200-thread percale, sheeted for turnover.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1457847/pexels-photo-1457847.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Bath fittings" loading="lazy"/><span class="tag">FF&amp;E · 06</span></div>
+          <figcaption><strong>Bath fittings</strong>Brushed nickel, thermostatic mixers.</figcaption>
+        </figure>
+      </div>
+
+      <div class="next-project">
+        <span class="label">N° 03 — Next</span>
+        <a href="#north-bay">North Bay, ON <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 03 North Bay ────────────────────────────── -->
+  <section class="project" id="north-bay">
+    <div class="wrap">
+      <div class="project-head reveal">
+        <div class="l">
+          <span class="project-meta">N° 03 — North Bay, ON</span>
+          <h2 class="project-title">Northern service,<br/><em>warmly</em> furnished.</h2>
+        </div>
+        <p class="project-overview">
+          A mid-tier business hotel in Northern Ontario — sixty-two keys,
+          one meeting room, a breakfast lounge. Specified for the corporate
+          traveller and the long winter, with deeper textiles, warmer
+          lighting and a robust set of public-floor seating.
+        </p>
+      </div>
+
+      <dl class="project-info reveal">
+        <div><dt>Location</dt><dd>North Bay, Ontario</dd></div>
+        <div><dt>Type</dt><dd>Business hotel · 62 keys</dd></div>
+        <div><dt>Completed</dt><dd>Spring 2025</dd></div>
+        <div><dt>Scope</dt><dd>FF&amp;E + meeting room</dd></div>
+      </dl>
+
+      <div class="project-hero-img reveal">
+        <img src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=2000" alt="North Bay hotel guest room with warm ambient lighting" width="2000" height="857" loading="lazy" />
+      </div>
+
+      <div class="project-site-row reveal">
+        <div class="img">
+          <img src="https://images.pexels.com/photos/2598683/pexels-photo-2598683.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Lobby seating" width="1400" height="1050" loading="lazy" />
+          <span class="cap">Site · Lobby</span>
+        </div>
+        <div class="img">
+          <img src="https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Executive room" width="1400" height="1050" loading="lazy" />
+          <span class="cap">Site · Executive king</span>
+        </div>
+      </div>
+
+      <div class="showroom-head reveal">
+        <h3>Items placed.</h3>
+        <p>A warm package built to absorb winter — heavier drapery, deeper
+          seating, lobby millwork to break the sightline from the wind-lock.</p>
+      </div>
+
+      <div class="showroom-grid reveal">
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1571464/pexels-photo-1571464.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Lounge sofa" loading="lazy"/><span class="tag">FF&amp;E · 01</span></div>
+          <figcaption><strong>Lobby seating</strong>Three-seat lounge, performance wool.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Headboard" loading="lazy"/><span class="tag">FF&amp;E · 02</span></div>
+          <figcaption><strong>Headboard · Casegoods</strong>Wall-hung, leather-wrapped, oak frame.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Pendant lighting" loading="lazy"/><span class="tag">FF&amp;E · 03</span></div>
+          <figcaption><strong>Pendant lighting</strong>2700K warm-white over lounge zone.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1571467/pexels-photo-1571467.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Work desk" loading="lazy"/><span class="tag">FF&amp;E · 04</span></div>
+          <figcaption><strong>Executive desk</strong>Walnut, with discreet cable management.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Stone vanity" loading="lazy"/><span class="tag">FF&amp;E · 05</span></div>
+          <figcaption><strong>Stone vanity</strong>Engineered quartz, undermount basin.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/3144580/pexels-photo-3144580.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Linen and bath towels" loading="lazy"/><span class="tag">OS&amp;E · 06</span></div>
+          <figcaption><strong>Linen · Towels</strong>Double-weight cotton, premium grade.</figcaption>
+        </figure>
+      </div>
+
+      <div class="next-project">
+        <span class="label">N° 04 — Next</span>
+        <a href="#mississauga">Mississauga, ON <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 04 Mississauga ───────────────────────────── -->
+  <section class="project" id="mississauga">
+    <div class="wrap">
+      <div class="project-head reveal">
+        <div class="l">
+          <span class="project-meta">N° 04 — Mississauga, ON</span>
+          <h2 class="project-title">Extended stay,<br/>at <em>airport</em> pace.</h2>
+        </div>
+        <p class="project-overview">
+          A 110-key extended-stay product near Pearson International — suites
+          that read like compact apartments. Kitchen, living, work and rest
+          briefed as four rooms in one footprint, every piece chosen for
+          fortnight stays and shared corridor traffic.
+        </p>
+      </div>
+
+      <dl class="project-info reveal">
+        <div><dt>Location</dt><dd>Mississauga, Ontario</dd></div>
+        <div><dt>Type</dt><dd>Extended stay · 110 keys</dd></div>
+        <div><dt>Completed</dt><dd>Summer 2025</dd></div>
+        <div><dt>Scope</dt><dd>Full FF&amp;E + kitchen casegoods</dd></div>
+      </dl>
+
+      <div class="project-hero-img reveal">
+        <img src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=2000" alt="Mississauga extended stay suite with living area" width="2000" height="857" loading="lazy" />
+      </div>
+
+      <div class="project-site-row reveal">
+        <div class="img">
+          <img src="https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Suite kitchenette" width="1400" height="1050" loading="lazy" />
+          <span class="cap">Site · Kitchenette</span>
+        </div>
+        <div class="img">
+          <img src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Bedroom zone" width="1400" height="1050" loading="lazy" />
+          <span class="cap">Site · Sleeping zone</span>
+        </div>
+      </div>
+
+      <div class="showroom-head reveal">
+        <h3>Items placed.</h3>
+        <p>Four-zone suite kit — kitchen, dining, work, rest — each piece
+          briefed for a 14-night guest, not a 1-night one.</p>
+      </div>
+
+      <div class="showroom-grid reveal">
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Kitchen casegoods" loading="lazy"/><span class="tag">FF&amp;E · 01</span></div>
+          <figcaption><strong>Kitchen casegoods</strong>Flat-pack, slab-front, contract laminate.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1571470/pexels-photo-1571470.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Dining table" loading="lazy"/><span class="tag">FF&amp;E · 02</span></div>
+          <figcaption><strong>Dining set</strong>Four-seater, oak veneer top.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1571464/pexels-photo-1571464.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Living sofa" loading="lazy"/><span class="tag">FF&amp;E · 03</span></div>
+          <figcaption><strong>Living sofa</strong>Two-seater, removable covers.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1571467/pexels-photo-1571467.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Work desk" loading="lazy"/><span class="tag">FF&amp;E · 04</span></div>
+          <figcaption><strong>Work desk</strong>Sit-stand option on executive suites.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Queen bed" loading="lazy"/><span class="tag">FF&amp;E · 05</span></div>
+          <figcaption><strong>Bed system</strong>Queen, hybrid pocket-spring mattress.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/3144580/pexels-photo-3144580.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Linen package" loading="lazy"/><span class="tag">OS&amp;E · 06</span></div>
+          <figcaption><strong>Linen · Bath</strong>Double-set per key for fortnight cycle.</figcaption>
+        </figure>
+      </div>
+
+      <div class="next-project">
+        <span class="label">N° 05 — Next</span>
+        <a href="#brampton">Brampton, ON <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 05 Brampton ──────────────────────────────── -->
+  <section class="project" id="brampton">
+    <div class="wrap">
+      <div class="project-head reveal">
+        <div class="l">
+          <span class="project-meta">N° 05 — Brampton, ON</span>
+          <h2 class="project-title">A full-service<br/>house <em>at scale</em>.</h2>
+        </div>
+        <p class="project-overview">
+          A 145-key full-service hotel with a 400-seat banquet and conference
+          floor. We delivered the FF&amp;E package across every guest floor
+          and the entire public-floor seating, drapery, lighting and
+          back-of-house kit. One consignment, one named lead, four containers.
+        </p>
+      </div>
+
+      <dl class="project-info reveal">
+        <div><dt>Location</dt><dd>Brampton, Ontario</dd></div>
+        <div><dt>Type</dt><dd>Full service · 145 keys</dd></div>
+        <div><dt>Completed</dt><dd>Autumn 2025</dd></div>
+        <div><dt>Scope</dt><dd>FF&amp;E + banquet + BOH</dd></div>
+      </dl>
+
+      <div class="project-hero-img reveal">
+        <img src="https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=2000" alt="Brampton hotel ballroom and banquet hall" width="2000" height="857" loading="lazy" />
+      </div>
+
+      <div class="project-site-row reveal">
+        <div class="img">
+          <img src="https://images.pexels.com/photos/2417842/pexels-photo-2417842.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Lobby with timber finishes" width="1400" height="1050" loading="lazy" />
+          <span class="cap">Site · Lobby</span>
+        </div>
+        <div class="img">
+          <img src="https://images.pexels.com/photos/2034335/pexels-photo-2034335.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Public-floor seating" width="1400" height="1050" loading="lazy" />
+          <span class="cap">Site · Public seating</span>
+        </div>
+      </div>
+
+      <div class="showroom-head reveal">
+        <h3>Items placed.</h3>
+        <p>From banquet stacking chairs to chandelier suspensions — the
+          public-floor kit briefed as a single, accountable package.</p>
+      </div>
+
+      <div class="showroom-grid reveal">
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Banquet chairs" loading="lazy"/><span class="tag">FF&amp;E · 01</span></div>
+          <figcaption><strong>Banquet chairs · 400</strong>Stackable, fabric-wrapped, ten-year frame.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1571470/pexels-photo-1571470.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Conference tables" loading="lazy"/><span class="tag">FF&amp;E · 02</span></div>
+          <figcaption><strong>Conference tables</strong>Modular, walnut veneer, power inlay.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Ballroom chandelier" loading="lazy"/><span class="tag">FF&amp;E · 03</span></div>
+          <figcaption><strong>Ballroom lighting</strong>Tiered crystal, suspended motorised.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1457847/pexels-photo-1457847.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Custom drapery" loading="lazy"/><span class="tag">FF&amp;E · 04</span></div>
+          <figcaption><strong>Custom drapery</strong>Full-bleed acoustic linen, motorised.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1571464/pexels-photo-1571464.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Lobby seating" loading="lazy"/><span class="tag">FF&amp;E · 05</span></div>
+          <figcaption><strong>Lobby seating</strong>Modular sectionals, performance velvet.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="BOH kitchen equipment" loading="lazy"/><span class="tag">OS&amp;E · 06</span></div>
+          <figcaption><strong>BOH kit</strong>Service trays, glassware, banquet flatware.</figcaption>
+        </figure>
+      </div>
+
+      <div class="next-project">
+        <span class="label">N° 06 — Next</span>
+        <a href="#hamilton">Hamilton, ON <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 06 Hamilton ─────────────────────────────── -->
+  <section class="project" id="hamilton">
+    <div class="wrap">
+      <div class="project-head reveal">
+        <div class="l">
+          <span class="project-meta">N° 06 — Hamilton, ON</span>
+          <h2 class="project-title">An <em>1890s</em> commercial<br/>building, reborn.</h2>
+        </div>
+        <p class="project-overview">
+          An adaptive reuse of an 1890s commercial building in Hamilton's
+          restored downtown core, opening as a heritage hotel in 2026.
+          Period-appropriate brass, oak millwork and quarry stone, paired
+          with quietly contemporary soft furnishings. Every line item
+          sourced to honour the envelope.
+        </p>
+      </div>
+
+      <dl class="project-info reveal">
+        <div><dt>Location</dt><dd>Hamilton, Ontario</dd></div>
+        <div><dt>Type</dt><dd>Heritage hotel · 56 keys</dd></div>
+        <div><dt>Completed</dt><dd>Spring 2026 (preview)</dd></div>
+        <div><dt>Scope</dt><dd>FF&amp;E + adaptive reuse</dd></div>
+      </dl>
+
+      <div class="project-hero-img reveal">
+        <img src="https://images.pexels.com/photos/1743231/pexels-photo-1743231.jpeg?auto=compress&cs=tinysrgb&w=2000" alt="Hamilton heritage hotel suite at evening" width="2000" height="857" loading="lazy" />
+      </div>
+
+      <div class="project-site-row reveal">
+        <div class="img">
+          <img src="https://images.pexels.com/photos/2598683/pexels-photo-2598683.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Restored lobby" width="1400" height="1050" loading="lazy" />
+          <span class="cap">Site · Restored lobby</span>
+        </div>
+        <div class="img">
+          <img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Heritage suite" width="1400" height="1050" loading="lazy" />
+          <span class="cap">Site · Heritage suite</span>
+        </div>
+      </div>
+
+      <div class="showroom-head reveal">
+        <h3>Items placed.</h3>
+        <p>Period-faithful brass, oak and stone, sourced from ateliers that
+          still hand-finish to original specification.</p>
+      </div>
+
+      <div class="showroom-grid reveal">
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/6585598/pexels-photo-6585598.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Restored brass hardware" loading="lazy"/><span class="tag">FF&amp;E · 01</span></div>
+          <figcaption><strong>Restored brass</strong>Door pulls, sconces, switch plates — period match.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Oak casegoods" loading="lazy"/><span class="tag">FF&amp;E · 02</span></div>
+          <figcaption><strong>Oak casegoods</strong>Quarter-sawn, hand-finished, era-appropriate.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Quarry stone" loading="lazy"/><span class="tag">FF&amp;E · 03</span></div>
+          <figcaption><strong>Quarry stone</strong>Local sandstone, period-quarry, on-site cut.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/2255935/pexels-photo-2255935.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Era-appropriate lighting" loading="lazy"/><span class="tag">FF&amp;E · 04</span></div>
+          <figcaption><strong>Era lighting</strong>Reproduction brass sconces, modern dimming.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Library chair" loading="lazy"/><span class="tag">FF&amp;E · 05</span></div>
+          <figcaption><strong>Library seating</strong>Leather wing chairs, hand-stitched.</figcaption>
+        </figure>
+        <figure>
+          <div class="ph"><img src="https://images.pexels.com/photos/3144580/pexels-photo-3144580.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Period linen" loading="lazy"/><span class="tag">OS&amp;E · 06</span></div>
+          <figcaption><strong>Linen · Soft goods</strong>Heavier weight, monogrammed to property.</figcaption>
+        </figure>
+      </div>
+
+      <div class="next-project">
+        <span class="label">Return</span>
+        <a href="#downtown-toronto">All projects <span class="arr">↑</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Closing CTA ───────────────────────────── -->
+  <section class="closing">
+    <div class="wrap">
+      <h2>Begin a brief.</h2>
+      <p>If your property is on the way, we can shorten the corridor. One named lead, one private channel, freight that opens before the architect's first walk-through.</p>
+      <a href="index.html#contact" class="big-cta">
+        Talk to the house <span>→</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="left">© 2026 VTrade Connections Pte. Ltd.</div>
+  <div class="center">A house for hospitality trade — Toronto · Chicago · Mumbai · Karachi</div>
+  <div class="right">
+    <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Modern Slavery</a>
+  </div>
+</footer>
+
+<script>
+  // Mobile drawer
+  const burger = document.getElementById('navBurger');
+  const drawer = document.getElementById('mobileDrawer');
+  const setMenu = (open) => {
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    drawer.setAttribute('aria-hidden', String(!open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  burger.addEventListener('click', () => {
+    setMenu(!document.body.classList.contains('menu-open'));
+  });
+  drawer.querySelectorAll('[data-mclose]').forEach(a => {
+    a.addEventListener('click', () => setMenu(false));
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('menu-open')) setMenu(false);
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1100 && document.body.classList.contains('menu-open')) setMenu(false);
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }
+  }, { threshold: 0.1, rootMargin: "0px 0px -60px 0px" });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

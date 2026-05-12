@@ -856,7 +856,22 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 4px;
   }
-  .brandstrip-grid .img { aspect-ratio: 4/3; }
+  .brandstrip-grid .img { aspect-ratio: 4/3; cursor: pointer; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+  .brandstrip-grid a.img { display: block; text-decoration: none; }
+  .brandstrip-grid .img:hover { transform: scale(1.01); }
+  .brandstrip-grid .img:hover::after {
+    content: "View project →";
+    position: absolute; left: 18px; bottom: 18px;
+    z-index: 3;
+    background: var(--accent);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
   .brandstrip-grid .img.balcony { aspect-ratio: 4/3; }
   .brandstrip-grid .img.bath    { aspect-ratio: 4/3; }
   .brandstrip-grid .img.balcony .ph {
@@ -1572,36 +1587,36 @@
       </div>
     </div>
     <div class="brandstrip-grid reveal d1">
-      <div class="img balcony has-photo">
+      <a href="projects.html#downtown-toronto" class="img balcony has-photo">
         <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Hotel balcony view at dusk overlooking water" width="1600" height="1000" loading="lazy" />
         <span class="frame-no">PORTFOLIO · I</span>
         <span class="cap">Downtown Toronto · 94-key boutique · 2024</span>
-      </div>
-      <div class="img bath has-photo">
+      </a>
+      <a href="projects.html#bradford" class="img bath has-photo">
         <img src="https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Spa-like marble bathing suite with brass fixtures" width="1600" height="1000" loading="lazy" />
         <span class="frame-no">PORTFOLIO · II</span>
         <span class="cap">Bradford, ON · Select service · 2024</span>
-      </div>
-      <div class="img balcony has-photo">
+      </a>
+      <a href="projects.html#north-bay" class="img balcony has-photo">
         <img src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Modern hotel room with warm ambient lighting" width="1600" height="1000" loading="lazy" />
         <span class="frame-no">PORTFOLIO · III</span>
         <span class="cap">North Bay, ON · 62-key hotel · 2025</span>
-      </div>
-      <div class="img bath has-photo">
+      </a>
+      <a href="projects.html#mississauga" class="img bath has-photo">
         <img src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Elegant hotel suite with city views" width="1600" height="1000" loading="lazy" />
         <span class="frame-no">PORTFOLIO · IV</span>
         <span class="cap">Mississauga, ON · Extended stay · 2025</span>
-      </div>
-      <div class="img balcony has-photo">
+      </a>
+      <a href="projects.html#brampton" class="img balcony has-photo">
         <img src="https://images.pexels.com/photos/2417842/pexels-photo-2417842.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Hotel lobby with warm timber and stone finishes" width="1600" height="1000" loading="lazy" />
         <span class="frame-no">PORTFOLIO · V</span>
         <span class="cap">Brampton, ON · Full service · 2025</span>
-      </div>
-      <div class="img bath has-photo">
+      </a>
+      <a href="projects.html#hamilton" class="img bath has-photo">
         <img src="https://images.pexels.com/photos/1743231/pexels-photo-1743231.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Refined suite interior with editorial lighting" width="1600" height="1000" loading="lazy" />
         <span class="frame-no">PORTFOLIO · VI</span>
         <span class="cap">Hamilton, ON · Heritage hotel · 2026</span>
-      </div>
+      </a>
     </div>
   </section>
 
@@ -1619,15 +1634,15 @@
         <div class="col">
           <h6>Direct</h6>
           <a href="mailto:house@vtradeconnections.co">house@vtradeconnections.co</a>
-          <a href="tel:+6531590000">+65 3159 0000</a>
+          <a href="tel:+16479796569">+1 (647) 979-6569</a>
         </div>
         <div class="col">
-          <h6>Singapore — HQ</h6>
-          <p>22 Boon Lay Way<br/>Tradehub 21, #08-04<br/>Singapore 609966</p>
+          <h6>Toronto — HQ</h6>
+          <p>18 King St E, Suite #1400<br/>Toronto, ON, Canada<br/>M5C 1C4</p>
         </div>
         <div class="col">
           <h6>Hours</h6>
-          <p>Mon — Fri, 08:00 — 19:00 SGT<br/>Out-of-hours: named clients, always.</p>
+          <p>Mon — Fri, 08:00 — 19:00 EST<br/>Out-of-hours: named clients, always.</p>
         </div>
       </div>
 
